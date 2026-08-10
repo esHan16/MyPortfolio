@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eshan Verma</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "inverse-surface": "#213145",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "tertiary-fixed": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-error-container": "#93000a",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "on-tertiary-container": "#818486",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#45464d",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-container": "#191c1e",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#bec6e0",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-secondary-fixed": "#07006c",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-high": "#dce9ff",
+                        "primary-container": "#131b2e",
+                        "surface": "#f8f9ff",
+                        "secondary-container": "#6063ee",
+                        "on-background": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#c6c6cd",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eaf1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "32px",
+                        "section-gap": "120px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "label-caps": ["Inter"],
+                        "body-md": ["Inter"],
+                        "technical-sm": ["JetBrains Mono"],
+                        "display-lg": ["Libre Caslon Text"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "technical-sm": ["13px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* FIX: offset anchor scroll targets so they don't land under the fixed nav bar (h-16 = 64px) */
+        section[id] {
+            scroll-margin-top: 88px;
+        }
+
+        /* Subtle Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .fade-in-up-delay-1 { animation-delay: 0.2s; }
+        .fade-in-up-delay-2 { animation-delay: 0.4s; }
+        .fade-in-up-delay-3 { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Shadowless Lift for Cards */
+        .card-lift {
+            border: 1px solid theme('colors.outline-variant');
+            transition: all 0.3s ease;
+        }
+        
+        .card-lift:hover {
+            box-shadow: 0 10px 30px -10px rgba(70, 72, 212, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Active Glow */
+        .glow-hover:hover {
+            box-shadow: 0 0 20px 4px rgba(70, 72, 212, 0.04);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .nav-link-hover {
+            position: relative;
+        }
+        .nav-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .nav-link-hover:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .soft-shadow:hover {
+            box-shadow: 0 10px 30px -10px rgba(70, 72, 212, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased bg-background text-on-background selection:bg-surface-variant selection:text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none transition-all duration-200">
+<div class="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<a class="font-display-lg text-headline-md text-on-surface dark:text-inverse-on-surface tracking-tighter hover:opacity-80 transition-opacity" href="#">
+            Eshan Verma
+        </a>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#work">Work</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#projects">Projects</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#about">About</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#contact">Contact</a>
+</div>
+<button class="md:hidden text-on-surface p-2 focus:outline-none">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="mb-section-gap min-h-[614px] flex flex-col justify-center" id="work">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-8 md:col-start-2">
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-6 fade-in-up uppercase tracking-widest">
+                    Software Engineer / iOS Specialist
+                </p>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-8 fade-in-up fade-in-up-delay-1 leading-tight">
+                    Crafting high-performance <br class="hidden md:block"/>
+<span class="text-gradient"></span> iOS experiences with precision.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10 fade-in-up fade-in-up-delay-2">
+                    Specializing in robust architectural patterns, fluid UI/UX, and complex native integrations. Building applications that not only function flawlessly but feel intuitive and premium in the user's hands.
+                </p>
+<div class="fade-in-up fade-in-up-delay-3 flex flex-wrap gap-4">
+<a class="inline-flex items-center justify-center px-6 py-3 bg-tertiary text-on-tertiary font-body-md text-body-md rounded transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/10" href="#projects">
+                        View Work
+                    </a>
+<a class="inline-flex items-center justify-center px-6 py-3 border border-outline-variant text-on-surface font-body-md text-body-md rounded transition-all duration-300 hover:border-primary hover:text-primary" href="#contact">
+                        Get in Touch
+                    </a>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="mb-section-gap" id="projects">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-12">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-16 border-b border-outline-variant pb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Selected Projects</h2>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant mt-2 md:mt-0"></span>
+</div>
+<div class="space-y-24">
+<!-- Project 1: LightX -->
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<a class="md:col-span-7 overflow-hidden rounded-xl bg-surface-container-low aspect-video relative card-lift block" href="https://apps.apple.com/in/app/lightx-edit-photo-make-video/id1400740705" target="_blank" rel="noopener noreferrer" aria-label="View LightX on the App Store">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A clean, minimalist presentation mockup of an iOS photo editing application interface displayed on an iPhone floating in a well-lit studio environment." src="https://res.cloudinary.com/jx6oqf9h/image/upload/v1786287612/LightX_AppStore.png"/>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</a>
+<div class="md:col-span-4 md:col-start-9 flex flex-col justify-center">
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-4 tracking-widest uppercase">Photo Retouch & Cut Background</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">LightX</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                                
+LightX is a versatile photo editing app with a user-friendly interface. It offers a wide range of features, including AI-powered tools for background removal, object removal, and photo restoration. You can also add stunning effects, filters, and text to your images. Whether you're a beginner or a pro, LightX is a great tool for enhancing your photos.
+                            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Swift</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Objective-C</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">UIKit</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Core Graphics</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVFoundation</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVKit</span>
+
+</div>
+</div>
+</div>
+<!-- Project 2: PhotoCut -->
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<a class="md:col-span-7 md:col-start-6 overflow-hidden rounded-xl bg-surface-container-low aspect-video relative card-lift md:order-last block" href="https://apps.apple.com/in/app/photo-eraser-background-cut/id1462045549" target="_blank" rel="noopener noreferrer" aria-label="View PhotoCut on the App Store">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sleek visualization of a mobile application focused on AI background removal, displayed on two overlapping iPhones." src="https://res.cloudinary.com/jx6oqf9h/image/upload/v1786287623/PhotoCut_AppStore.png"/>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</a>
+<div class="md:col-span-4 md:col-start-2 flex flex-col justify-center md:order-first">
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-4 tracking-widest uppercase">Al Pixel Lab, Remove Bg, Object</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">PhotoCut</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                                PhotoCut is a photo editing app that lets you easily remove backgrounds, change them, and apply various effects and filters. It's available on iOS and Android.
+                            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Swift</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Objective-C</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">UIKit</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Core Graphics</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVFoundation</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVKit</span>
+</div>
+</div>
+</div>
+<!-- Project 3: StoryZ -->
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<a class="md:col-span-7 overflow-hidden rounded-xl bg-surface-container-low aspect-video relative card-lift block" href="https://apps.apple.com/in/app/storyz-ai-video-generator/id1370761595" target="_blank" rel="noopener noreferrer" aria-label="View StoryZ on the App Store">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A vibrant yet sophisticated display of a photo animation app running on an iPad pro resting on a light grey desk." src="https://res.cloudinary.com/jx6oqf9h/image/upload/v1786287634/StoryZ_AppStore.png"/>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+</a>
+<div class="md:col-span-4 md:col-start-9 flex flex-col justify-center">
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-4 tracking-widest uppercase">Al Photo to video & Animator</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">StoryZ</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                                StoryZ is a photo animation app that lets you bring your still images to life. You can add motion effects, create animated GIFs, and even combine photos with videos to create unique visual stories. It's a fun and easy-to-use app that lets you unleash your creativity and share your animated creations with the world.
+                            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Swift</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Objective-C</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">UIKit</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Core Graphics</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVFoundation</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">AVKit</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter mb-section-gap" id="about">
+<!-- Left Side: Portrait -->
+<div class="md:col-span-5 lg:col-span-4 relative group">
+<div class="aspect-[3/4] w-full overflow-hidden rounded border border-outline-variant/30 soft-shadow transition-shadow duration-500 bg-surface-container">
+<img class="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out mix-blend-multiply" data-alt="A highly professional, editorial-style black and white portrait photograph of a male software engineer looking thoughtfully slightly off-camera." src="https://res.cloudinary.com/jx6oqf9h/image/upload/v1786289921/my_portrait.png"/>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-outline-variant/50 hidden md:block"></div>
+</div>
+<!-- Right Side: Narrative -->
+<div class="md:col-span-7 lg:col-span-6 lg:col-start-6 flex flex-col justify-center">
+<div class="space-y-6">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">About Me.</h2>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/30 pb-4 inline-block">CRAFTING SEAMLESS IOS EXPERIENCES</p>
+</div>
+<div class="font-body-lg text-body-lg text-on-surface-variant space-y-6 pt-4">
+<p class="leading-relaxed">
+                        My journey in software engineering over the past 4 years has been defined by a pursuit of precision and robust architecture. I build solutions that are not just functional, but enduring.
+                    </p>
+<div class="pl-6 border-l-2 border-outline-variant/40 space-y-8 my-8">
+<div>
+<span class="block font-technical-sm text-technical-sm text-on-surface mb-1">Sep 2022 – Jul 2025, Nov 2025 – Present</span>
+<strong class="font-body-md text-on-surface block">Andor Communications, Noida</strong>
+<span class="text-sm block text-on-surface-variant mb-3">Software Engineer</span>
+<ul class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant font-body-md">
+<li>Delivered and maintained 5+ large-scale consumer iOS apps (LightX, PhotoCut, AiLeap, StyleOn, StoryZ) for 10M+ users.</li>
+<li>Implemented MVVM architecture, reducing feature integration effort by ~30%.</li>
+<li>Designed 15+ reusable custom UI components for consistency and speed.</li>
+<li>Integrated RESTful APIs, Core Graphics for custom drawings, and migrated legacy Objective-C to Swift.</li>
+<li>Upgraded apps to iOS 26 "Liquid Glass" UI standards.</li>
+<li>Integrated Google Analytics, Firebase A/B testing, and localization for 20+ languages.</li>
+</ul>
+</div>
+<div>
+<span class="block font-technical-sm text-technical-sm text-on-surface mb-1">Jul 2025 – Nov 2025</span>
+<strong class="font-body-md text-on-surface block">To The New, Noida</strong>
+<span class="text-sm block text-on-surface-variant mb-3">Software Engineer</span>
+<ul class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant font-body-md">
+<li>Developed a large OTT aggregation platform using Swift and UIKit.</li>
+<li>Integrated Mixpanel and CleverTap for engagement and notifications.</li>
+<li>Optimized REST API performance and followed modular architecture.</li>
+</ul>
+</div>
+<div>
+<span class="block font-technical-sm text-technical-sm text-on-surface mb-1">Jan 2022 – Jun 2022</span>
+<strong class="font-body-md text-on-surface block">ValueCoders Services LLP, Noida</strong>
+<span class="text-sm block text-on-surface-variant mb-3">Jr. Associate Software Developer</span>
+<ul class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant font-body-md">
+<li>Developed features for a UK-based client iOS app on the App Store.</li>
+<li>Integrated REST APIs and improved UI responsiveness.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mt-section-gap pt-32 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-12 gap-8" id="contact">
+<div class="md:col-span-8 md:col-start-3 text-center space-y-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Let's build something exceptional.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Open for new opportunities and interesting projects.</p>
+</div>
+<div class="py-8">
+<a class="group inline-flex items-center space-x-3 text-on-surface hover:text-secondary transition-colors duration-300" href="mailto:v.eshan16@gmail.com">
+<span class="font-technical-sm text-technical-sm tracking-widest text-lg">v.eshan16@gmail.com</span>
+<span class="material-symbols-outlined transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">arrow_outward</span>
+</a>
+</div>
+<div class="flex items-center justify-center space-x-6 text-on-surface-variant font-technical-sm text-technical-sm">
+<span class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="">Noida, IN</span>
+</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<a class="hover:text-primary transition-colors" href="https://github.com/esHan16">GitHub</a>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<a class="hover:text-primary transition-colors" href="https://www.linkedin.com/in/eshanverma/">LinkedIn</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-background dark:bg-background border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
+<span class="font-headline-md text-headline-md text-on-surface">Eshan Verma</span>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant">© 2026 Eshan Verma. Built with precision.</span>
+</div>
+<div class="flex gap-6 items-center font-technical-sm text-technical-sm text-on-surface-variant opacity-80 hover:opacity-100 transition-all duration-200 mt-6 md:mt-0">
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://github.com/esHan16" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://www.linkedin.com/in/eshanverma/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="mailto:v.eshan16@gmail.com">Email</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://drive.google.com/file/d/1XT7YKuOCAr74vDdfu6_X4pJGtiDrR4yR/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+</div>
+</div>
+</footer>
+<script>
+    // Simple Intersection Observer for scroll animations
+    document.addEventListener("DOMContentLoaded", () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Select elements that don't have the initial fade-in classes
+        const animateElements = document.querySelectorAll('.card-lift');
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    });
+</script>
+</body></html>
