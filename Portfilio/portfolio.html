@@ -201,6 +201,7 @@
 <div class="hidden md:flex space-x-8 items-center">
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#work">Work</a>
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#projects">Projects</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#personal-projects">Personal Projects</a>
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#about">About</a>
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#contact">Contact</a>
 </div>
@@ -211,6 +212,7 @@
 <div class="flex flex-col px-margin-mobile py-4 space-y-1 max-w-container-max mx-auto">
 <a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#work">Work</a>
 <a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#projects">Projects</a>
+<a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#personal-projects">Personal Projects</a>
 <a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#about">About</a>
 <a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#contact">Contact</a>
 </div>
@@ -324,6 +326,56 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
 </div>
 </div>
 </section>
+<!-- Personal Projects Section -->
+<section class="mb-section-gap" id="personal-projects">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-12">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-16 border-b border-outline-variant pb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Personal Projects</h2>
+<span class="font-technical-sm text-technical-sm text-on-surface-variant mt-2 md:mt-0"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Personal Project 1: Sudoku Solver Pro -->
+<a class="group card-lift glow-hover rounded-xl p-8 flex flex-col bg-surface-container-low block" href="https://github.com/esHan16/SudokuSolverPro" target="_blank" rel="noopener noreferrer" aria-label="View Sudoku Solver Pro on GitHub">
+<div class="flex items-start justify-between mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">grid_view</span>
+<span class="material-symbols-outlined text-on-surface-variant transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Sudoku Solver Pro</h3>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-6 tracking-widest uppercase">Swift, UIKit</p>
+<ul class="list-disc pl-5 space-y-2 text-sm text-on-surface-variant font-body-md mb-8">
+<li>Built an interactive 9×9 Sudoku game with randomized puzzle generation and multiple difficulty levels for a complete gameplay experience.</li>
+<li>Implemented timer controls, cell selection, number input, erase/reset, and automatic solution validation using UIKit.</li>
+<li>Developed Sudoku solving and validation logic, enabling one-tap puzzle solving and accurate detection of incorrect user solutions.</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Swift</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">UIKit</span>
+</div>
+</a>
+<!-- Personal Project 2: MyWeatherApp -->
+<a class="group card-lift glow-hover rounded-xl p-8 flex flex-col bg-surface-container-low block" href="https://github.com/esHan16/MyWeatherApp" target="_blank" rel="noopener noreferrer" aria-label="View MyWeatherApp on GitHub">
+<div class="flex items-start justify-between mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">partly_cloudy_day</span>
+<span class="material-symbols-outlined text-on-surface-variant transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">MyWeatherApp</h3>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant mb-6 tracking-widest uppercase">Swift, UIKit, REST APIs</p>
+<ul class="list-disc pl-5 space-y-2 text-sm text-on-surface-variant font-body-md mb-8">
+<li>Developed a weather application providing real-time temperature, humidity, wind speed, and weather information for cities worldwide.</li>
+<li>Integrated Weather REST APIs and a country/city data source to retrieve and display location-specific weather information.</li>
+<li>Designed a simple and intuitive city-selection workflow using Swift and UIKit for efficient weather lookup and presentation.</li>
+</ul>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">Swift</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">UIKit</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-technical-sm text-technical-sm rounded">REST APIs</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
 <!-- About Section -->
 <section class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter mb-section-gap" id="about">
 <!-- Left Side: Portrait -->
@@ -382,7 +434,6 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
 </div>
 </div>
 </div>
-</div>
 </section>
 <!-- Contact Section -->
 <section class="mt-section-gap pt-32 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-12 gap-8 items-center" id="contact">
@@ -421,7 +472,7 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
 <a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://github.com/esHan16" target="_blank" rel="noopener noreferrer">GitHub</a>
 <a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://www.linkedin.com/in/eshanverma/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 <a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="mailto:v.eshan16@gmail.com">Email</a>
-<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://drive.google.com/file/d/1XT7YKuOCAr74vDdfu6_X4pJGtiDrR4yR/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+<a class="hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="https://drive.google.com/file/d/1ajdD9LW4yv0O-5xCf6FzDSBJWkjtgOu3/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
 </div>
 </div>
 </footer>
