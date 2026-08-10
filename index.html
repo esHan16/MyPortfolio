@@ -115,6 +115,11 @@
             scroll-margin-top: 88px;
         }
 
+        #contact {
+            min-height: calc(100vh - 88px);
+            min-height: calc(100dvh - 88px);
+        }
+
         /* Subtle Animations */
         .fade-in-up {
             opacity: 0;
@@ -189,7 +194,7 @@
 <body class="min-h-screen flex flex-col antialiased bg-background text-on-background selection:bg-surface-variant selection:text-on-surface">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none transition-all duration-200">
-<div class="flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
+<div class="relative flex justify-between items-center px-margin-mobile md:px-gutter max-w-container-max mx-auto h-16">
 <a class="font-display-lg text-headline-md text-on-surface dark:text-inverse-on-surface tracking-tighter hover:opacity-80 transition-opacity" href="#">
             Eshan Verma
         </a>
@@ -199,9 +204,17 @@
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#about">About</a>
 <a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 nav-link-hover active:scale-95" href="#contact">Contact</a>
 </div>
-<button class="md:hidden text-on-surface p-2 focus:outline-none">
-<span class="material-symbols-outlined">menu</span>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu" class="md:hidden text-on-surface p-2 focus:outline-none" id="mobile-menu-button" type="button">
+<span class="material-symbols-outlined" id="menu-icon">menu</span>
 </button>
+<div class="hidden md:hidden absolute top-full left-0 right-0 bg-surface/95 dark:bg-inverse-surface/95 backdrop-blur-xl border-b border-outline-variant dark:border-outline shadow-sm" id="mobile-menu">
+<div class="flex flex-col px-margin-mobile py-4 space-y-1 max-w-container-max mx-auto">
+<a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#work">Work</a>
+<a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#projects">Projects</a>
+<a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#about">About</a>
+<a class="mobile-nav-link font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300 py-3" href="#contact">Contact</a>
+</div>
+</div>
 </div>
 </nav>
 <main class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-gutter max-w-container-max mx-auto w-full">
@@ -372,7 +385,7 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
 </div>
 </section>
 <!-- Contact Section -->
-<section class="mt-section-gap pt-32 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-12 gap-8" id="contact">
+<section class="mt-section-gap pt-32 border-t border-outline-variant/30 grid grid-cols-1 md:grid-cols-12 gap-8 items-center" id="contact">
 <div class="md:col-span-8 md:col-start-3 text-center space-y-8">
 <div>
 <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Let's build something exceptional.</h2>
@@ -413,8 +426,32 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
 </div>
 </footer>
 <script>
-    // Simple Intersection Observer for scroll animations
     document.addEventListener("DOMContentLoaded", () => {
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon");
+
+        const setMobileMenuOpen = (isOpen) => {
+            mobileMenu.classList.toggle("hidden", !isOpen);
+            menuButton.setAttribute("aria-expanded", String(isOpen));
+            menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+            menuIcon.textContent = isOpen ? "close" : "menu";
+        };
+
+        menuButton.addEventListener("click", () => {
+            setMobileMenuOpen(mobileMenu.classList.contains("hidden"));
+        });
+
+        document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+            link.addEventListener("click", () => setMobileMenuOpen(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+                setMobileMenuOpen(false);
+            }
+        });
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -431,7 +468,6 @@ LightX is a versatile photo editing app with a user-friendly interface. It offer
             });
         }, observerOptions);
 
-        // Select elements that don't have the initial fade-in classes
         const animateElements = document.querySelectorAll('.card-lift');
         animateElements.forEach(el => {
             el.style.opacity = '0';
